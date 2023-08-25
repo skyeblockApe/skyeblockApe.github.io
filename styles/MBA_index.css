@@ -3,10 +3,11 @@ div,
 p {
     padding: 0.01px;
     margin: 0.01px;
+    font-family: 'Black Ops One', cursive;
 }
 
 #top_border {
-    height: 10vh;
+    height: 34vh;
     position: fixed;
     top: 0vh;
     left: 0;
@@ -14,7 +15,10 @@ p {
     transition: top 0.3s ease;
     /* 添加過渡效果 */
     z-index: 2;
+    /* background-color: #B7B7BD; */
 }
+
+
 
 #height_block {
     height: 200vh;
@@ -28,44 +32,121 @@ p {
     flex-direction: row;
     align-items: center;
 
+    /* background-color: #B7B7BD; */
 }
+
+
 
 #border_flexcontain div {
     height: 8vh;
-    flex: 1;
     margin: 2px;
+}
+
+
+#border_left {
+    flex: 1;
+}
+
+#border_midel {
+    flex: 3;
+}
+
+#border_right {
+    flex: 1;
+}
+
+#border_midel table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 3.5vh;
+}
+
+#border_midel td {
+    width: 33%;
+}
+
+#tp1B {
+    background-image: url(../images/DAVIE/blue_bk.png);
+    background-position: right;
+}
+
+#tp2B {
+    background-image: url(../images/DAVIE/pink_bk.png);
+}
+
+#tp1B,
+#tp2B {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+
 }
 
 #top_poster {
     height: 100vh;
+    width: 100vw;
     display: flex;
-    align-items: flex-end
+    justify-content: center;
+    align-items: flex-end;
+    background-image: url(../images/DAVIE/top_bk.jpg);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 10vh;
+    /* padding-bottom: 10vh; */
+
 }
 
-#top_poster div {
-    flex: 1;
-    height: 90vh;
-    margin: 0;
-    padding: 0;
+#CF_poster_bk {
+    background-image: url(../images/DAVIE/mid_bk.jpg);
+    background-repeat: repeat-y;
+    width: 100vw;
+    background-size: cover;
+
 }
 
 #tp1,
 #tp2 {
+    margin-top: 10vh;
+    height: 70%;
+    width: 70%;
     background-repeat: no-repeat;
-    background-size: 90% 90%;
     background-position: center;
-
-    transition: background-size 0.5s ease;
-
+    background-size: contain;
+    margin-bottom: 1vh;
 
     /* 添加過渡效果 */
 }
 
 #tp1:hover,
 #tp2:hover {
-    background-size: 75% 75%;
+    filter: drop-shadow(2px 2px 2px #44444444);
 }
 
+
+
+
+#CF_poster_top {
+    width: 100%;
+    height: 15vh;
+    background-image: url(../images/DAVIE/LLL.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+    margin: 0px;
+
+    text-align: center;
+    line-height: 15vh;
+    color: beige;
+    font-size: 42px;
+    letter-spacing: 19px;
+}
 
 #CF_poster {
     width: 100%;
@@ -73,23 +154,37 @@ p {
     display: flex;
     align-items: center;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-.CFmerchandises {
-
-    height: 48vh;
-    width: 24vw;
-    margin: 3vw;
-
-
-    border-radius: 50px;
+.CFmerchandises_bk {
+    background-image: url(../images/DAVIE/cercle.png);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 60vh;
+    width: 30vw;
+    margin: 0.1vw;
+    /* border-radius: 50px; */
     border: 5px solid transparent;
-    background: linear-gradient(45deg, #78C789, #39B3AE);
+    /* background: linear-gradient(45deg, #B7B7BD, #B1ACB3);
     /* 使用你想要的颜色 */
-    -webkit-mask:
+    /* -webkit-mask:
         linear-gradient(#fff 0 0) padding-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    mask-composite: exclude; */
+    */
+}
+
+.CFmerchandises {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 80%;
+
+}
+
+#bottom_page {
+    background-image: ;
 }

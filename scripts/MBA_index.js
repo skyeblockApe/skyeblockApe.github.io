@@ -12,19 +12,19 @@ function setRandomBackgroundColor(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
         const randomColor = getRandomColor();
-        // element.style.backgroundColor = randomColor;
+        element.style.backgroundColor = randomColor;
         element.style.opacity = 1;
         element.style.borderStyle = "solid";
     }
 }
 
 // 確保 DOM 加載完成後再執行 JavaScript
+
 document.addEventListener("DOMContentLoaded", function () {
-    const ids = ["top_border", "height_block", "border_left",
-        "border_midel_left", "border_midel_right", "border_right",
-        "tp1B", "tp2B"];
+    const ids = []
     ids.forEach(id => setRandomBackgroundColor(id));
 });
+
 //random backgroun-color
 
 // 獲取 #top_border 元素
@@ -35,7 +35,7 @@ window.addEventListener('scroll', function () {
 
     if (currentScrollPosition > lastScrollPosition) {
         // 向下滾動，top 逐漸減少至 -10vh
-        document.getElementById('top_border').style.top = Math.max(-10, -currentScrollPosition / 10) + 'vh';
+        document.getElementById('top_border').style.top = Math.max(-34, -currentScrollPosition / 10) + 'vh';
     } else {
         // 向上滾動，快速恢復至 0vh
         document.getElementById('top_border').style.top = '0vh';
@@ -46,47 +46,39 @@ window.addEventListener('scroll', function () {
 
 const apeproducts = [
     {
-        src: "./images/ApeNFT/ap1.png"
+        src: "./images/DAVIE/item_1.png"
     },
     {
-        src: "./images/ApeNFT/ap2.png"
+        src: "./images/DAVIE/item_2.png"
     },
     {
-        src: "./images/ApeNFT/ap3.png"
+        src: "./images/DAVIE/APE3.png"
     },
     {
-        src: "./images/ApeNFT/ap1.png"
+        src: "./images/DAVIE/item_6.png"
     },
     {
-        src: "./images/ApeNFT/ap2.png"
+        src: "./images/DAVIE/APE1.png"
     },
     {
-        src: "./images/ApeNFT/ap3.png"
+        src: "./images/DAVIE/item_1.png"
     },
     {
-        src: "./images/ApeNFT/ap1.png"
+        src: "./images/DAVIE/APE2.png"
     },
+
 
 ]
 
 const CFmerchandises = [
     {
-        src: "./images/DogNFT/A.png"
+        src: "./images/DAVIE/l_item1.png"
     },
     {
-        src: "./images/DogNFT/B.png"
+        src: "./images/DAVIE/l_item2.png"
     },
     {
-        src: "./images/DogNFT/C.png"
-    },
-    {
-        src: "./images/DogNFT/D.png"
-    },
-    {
-        src: "./images/DogNFT/E.png"
-    },
-    {
-        src: "./images/DogNFT/F.png"
+        src: "./images/DAVIE/l_item3.png"
     },
 ]
 
@@ -151,7 +143,20 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(changeImages, 5000); // 每 3 秒切换图片
 
 
+    const CF_poster = document.getElementById("CF_poster")
 
+    for (let i = 0; i < CFmerchandises.length; i++) {
+        const CFmerchandise = CFmerchandises[i]
+        const BKUnitElement = document.createElement("div");
+        BKUnitElement.classList.add("CFmerchandises_bk");
+
+        const ItemUnitElement = document.createElement("div");
+        ItemUnitElement.classList.add("CFmerchandises")
+        ItemUnitElement.style.backgroundImage = `url(${CFmerchandise.src})`
+
+        BKUnitElement.appendChild(ItemUnitElement)
+        CF_poster.appendChild(BKUnitElement)
+    }
 
 
 });
