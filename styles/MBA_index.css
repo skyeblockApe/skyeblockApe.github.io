@@ -92,16 +92,15 @@ p {
 }
 
 #top_poster {
-    height: 100vh;
+    height: 55vw;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     background-image: url(../images/DAVIE/top_bk.png);
-
     background-repeat: no-repeat;
     background-size: contain;
-    padding-bottom: 7vh;
+    /* padding-bottom: 2vh; */
     /* padding-bottom: 10vh; */
 
 
