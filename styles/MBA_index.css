@@ -9,7 +9,7 @@ p {
 }
 
 #top_border {
-    height: 34vh;
+    height: 40vh;
     position: fixed;
     top: 0vh;
     left: 0;
@@ -97,18 +97,18 @@ p {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background-image: url(../images/DAVIE/top_bk.jpg);
+    background-image: url(../images/DAVIE/top_bk.png);
 
     background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 10vh;
+    background-size: contain;
+    padding-bottom: 7vh;
     /* padding-bottom: 10vh; */
 
 
 }
 
 #CF_poster_bk {
-    background-image: url(../images/DAVIE/mid_bk.jpg);
+    background-image: url(../images/DAVIE/mid_bk.png);
     background-repeat: repeat-y;
     width: 100vw;
     background-size: contain;
