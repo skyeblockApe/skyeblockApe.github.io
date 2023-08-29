@@ -49,16 +49,16 @@ const apeproducts = [
         src: "./images/DAVIE/item_1.png"
     },
     {
-        src: "./images/DAVIE/item_2.png"
+        src: "./images/DAVIE/item_7.png"
     },
     {
-        src: "./images/DAVIE/APE3.png"
+        src: "./images/DAVIE/item_2.png"
     },
     {
         src: "./images/DAVIE/item_6.png"
     },
     {
-        src: "./images/DAVIE/APE1.png"
+        src: "./images/DAVIE/item_7.png"
     },
     {
         src: "./images/DAVIE/item_1.png"

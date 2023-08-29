@@ -3,6 +3,8 @@ div,
 p {
     padding: 0.01px;
     margin: 0.01px;
+    margin-top: 0px;
+    margin-bottom: -0.01px;
     font-family: 'Black Ops One', cursive;
 }
 
