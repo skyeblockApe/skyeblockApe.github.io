@@ -1,0 +1,91 @@
+[
+  {
+    "id": "cancerfree-tote",
+    "project": "cancerfree-merch",
+    "year": null,
+    "partner_ids": ["ape-101", "cancerfree"],
+    "type": "accessory",
+    "status": "published",
+    "name_key": "items.cancerfreeTote.name",
+    "story_key": "items.cancerfreeTote.story",
+    "alt_key": "items.cancerfreeTote.alt",
+    "images": ["assets/merch.jpeg"],
+    "character_refs": [
+      {
+        "collection": "BAYC",
+        "token_id": "8796",
+        "identification_status": "confirmed",
+        "role_key": "items.cancerfreeTote.character"
+      }
+    ],
+    "related_news_ids": []
+  },
+  {
+    "id": "cancerfree-badge",
+    "project": "cancerfree-merch",
+    "year": 2023,
+    "partner_ids": ["ape-101", "cancerfree"],
+    "type": "badge",
+    "status": "published",
+    "name_key": "items.cancerfreeBadge.name",
+    "story_key": "items.cancerfreeBadge.story",
+    "alt_key": "items.cancerfreeBadge.alt",
+    "images": ["assets/cancerfree-badge-apefest-2023.jpg"],
+    "character_refs": [
+      {
+        "collection": "BAYC",
+        "token_id": "8796",
+        "identification_status": "confirmed",
+        "role_key": "items.cancerfreeBadge.character"
+      }
+    ],
+    "related_news_ids": []
+  },
+  {
+    "id": "gioia-pan-aw23-look",
+    "project": "gioia-pan",
+    "year": 2023,
+    "partner_ids": ["gioia-pan", "ape-101"],
+    "type": "fashion-look",
+    "status": "published",
+    "name_key": "items.gioiaPanLook.name",
+    "story_key": "items.gioiaPanLook.story",
+    "alt_key": "items.gioiaPanLook.alt",
+    "images": [
+      "assets/gioia-pan-bayc8796-runway.jpg",
+      "assets/gioia-pan-bayc8796-black-look.jpg",
+      "assets/gioia-pan-bayc8796-white-look.jpg"
+    ],
+    "video": {
+      "src": "assets/gioia-pan-aw23-720p-muted.mp4",
+      "poster": "assets/gioia-pan-aw23-poster.jpg",
+      "source_url": "https://www.youtube.com/watch?v=o4BuEyrMj4g",
+      "source_title": "Taipei Fashion Week 臺北時裝週",
+      "caption_key": "items.gioiaPanLook.videoCaption",
+      "usage_key": "items.gioiaPanLook.videoUsage"
+    },
+    "character_refs": [
+      {
+        "collection": "BAYC",
+        "token_id": "8796",
+        "identification_status": "confirmed",
+        "usage_authorization": "authorized-by-token-owner",
+        "role_key": "items.gioiaPanLook.character"
+      }
+    ],
+    "related_news_ids": ["gioia-pan-thehubnews-20230409", "gioia-pan-jazko-20230409"]
+  },
+  {
+    "id": "dentsu-taiwan-beer",
+    "project": "dentsu-beer",
+    "year": null,
+    "partner_ids": ["dentsu-taiwan"],
+    "type": "beverage-archive",
+    "status": "draft",
+    "name_key": "items.dentsuBeer.name",
+    "story_key": "items.dentsuBeer.story",
+    "images": [],
+    "character_refs": [],
+    "related_news_ids": []
+  }
+]

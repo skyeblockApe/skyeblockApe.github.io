@@ -1,0 +1,60 @@
+[
+  {
+    "id": "avatar-forum-cancerfree-official",
+    "project": "avatar-forum",
+    "outlet": "CancerFree Biotech",
+    "date": "2022-12-06",
+    "source_lang": "zh-TW",
+    "original_title": "無聊猿登場主持！邁向元宇宙替身醫療論壇 顛覆未來生技醫療想像",
+    "url": "https://cancerfree.io/blogs/%E6%9C%80%E6%96%B0%E6%B6%88%E6%81%AF/%E7%84%A1%E8%81%8A%E7%8C%BF-%E7%99%BB%E5%A0%B4%E4%B8%BB%E6%8C%81-%E9%82%81%E5%90%91%E5%85%83%E5%AE%87%E5%AE%99%E6%9B%BF%E8%BA%AB%E9%86%AB%E7%99%82%E8%AB%96%E5%A3%87-%E9%A1%9B%E8%A6%86%E6%9C%AA%E4%BE%86%E7%94%9F%E6%8A%80%E9%86%AB%E7%99%82%E6%83%B3%E5%83%8F",
+    "archive_url": null,
+    "summary_key": "news.avatarCancerFree.summary",
+    "role_key": "news.avatarCancerFree.role",
+    "status": "verified",
+    "mirror_urls": []
+  },
+  {
+    "id": "avatar-forum-abmedia-20221215",
+    "project": "avatar-forum",
+    "outlet": "ABMedia 鏈新聞",
+    "date": "2022-12-15",
+    "source_lang": "zh-TW",
+    "original_title": "替身醫療論壇登場，無聊猿跨界主持探索元宇宙醫療",
+    "url": "https://abmedia.io/20221215-avatar-medicine-forum",
+    "archive_url": null,
+    "summary_key": "news.avatarAbmedia.summary",
+    "role_key": "news.avatarAbmedia.role",
+    "status": "verified",
+    "mirror_urls": [
+      "https://www.chinatimes.com/realtimenews/20221206003752-260418"
+    ]
+  },
+  {
+    "id": "gioia-pan-thehubnews-20230409",
+    "project": "gioia-pan",
+    "outlet": "新頭條 TheHubNews",
+    "date": "2023-04-09",
+    "source_lang": "zh-TW",
+    "original_title": "臺北時裝週-潘怡良品牌秀移師淡水漁人碼頭",
+    "url": "https://www.thehubnews.net/archives/209402",
+    "archive_url": null,
+    "summary_key": "news.gioiaPanTheHub.summary",
+    "role_key": "news.gioiaPanTheHub.role",
+    "status": "verified",
+    "mirror_urls": []
+  },
+  {
+    "id": "gioia-pan-jazko-20230409",
+    "project": "gioia-pan",
+    "outlet": "JAZKO",
+    "date": "2023-04-09",
+    "source_lang": "zh-TW",
+    "original_title": "臺北時裝週 潘怡良 GIOIA PAN AW23「海洋之心」系列 跨界「無聊猿」及「克隆人」的多重宇宙",
+    "url": "https://jazko.com/fashion/style/taipei-fashion-week-gioia-pan-aw23/",
+    "archive_url": null,
+    "summary_key": "news.gioiaPanJazko.summary",
+    "role_key": "news.gioiaPanJazko.role",
+    "status": "verified",
+    "mirror_urls": []
+  }
+]
