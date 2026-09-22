@@ -2,8 +2,8 @@
   {
     "id": "cancerfree-tote",
     "project": "cancerfree-merch",
-    "year": null,
-    "partner_ids": ["ape-101", "cancerfree"],
+    "year": 2022,
+    "partner_ids": ["cancerfree", "bayc-8796"],
     "type": "accessory",
     "status": "published",
     "name_key": "items.cancerfreeTote.name",
@@ -21,16 +21,37 @@
     "related_news_ids": []
   },
   {
+    "id": "ape101-cancerfree-cap",
+    "project": "cancerfree-merch",
+    "year": 2023,
+    "partner_ids": ["ape-101", "cancerfree", "bayc-8796"],
+    "type": "cap",
+    "status": "published",
+    "name_key": "items.cancerfreeCap.name",
+    "story_key": "items.cancerfreeCap.story",
+    "alt_key": "items.cancerfreeCap.alt",
+    "images": ["assets/ape101-cancerfree-bayc8796-cap.webp"],
+    "character_refs": [
+      {
+        "collection": "BAYC",
+        "token_id": "8796",
+        "identification_status": "confirmed",
+        "role_key": "items.cancerfreeCap.character"
+      }
+    ],
+    "related_news_ids": []
+  },
+  {
     "id": "cancerfree-badge",
     "project": "cancerfree-merch",
     "year": 2023,
-    "partner_ids": ["ape-101", "cancerfree"],
+    "partner_ids": ["cancerfree", "bayc-8796"],
     "type": "badge",
     "status": "published",
     "name_key": "items.cancerfreeBadge.name",
     "story_key": "items.cancerfreeBadge.story",
     "alt_key": "items.cancerfreeBadge.alt",
-    "images": ["assets/cancerfree-badge-apefest-2023.jpg"],
+    "images": ["assets/cancerfree-bayc8796-badge.webp"],
     "character_refs": [
       {
         "collection": "BAYC",
@@ -42,19 +63,40 @@
     "related_news_ids": []
   },
   {
+    "id": "cancerfree-mask",
+    "project": "cancerfree-merch",
+    "year": null,
+    "partner_ids": ["cancerfree", "bayc-8796"],
+    "type": "mask",
+    "status": "published",
+    "name_key": "items.cancerfreeMask.name",
+    "story_key": "items.cancerfreeMask.story",
+    "alt_key": "items.cancerfreeMask.alt",
+    "images": ["assets/cancerfree-bayc8796-mask.jpg"],
+    "character_refs": [
+      {
+        "collection": "BAYC",
+        "token_id": "8796",
+        "identification_status": "confirmed",
+        "role_key": "items.cancerfreeMask.character"
+      }
+    ],
+    "related_news_ids": []
+  },
+  {
     "id": "gioia-pan-aw23-look",
     "project": "gioia-pan",
     "year": 2023,
-    "partner_ids": ["gioia-pan", "ape-101"],
+    "partner_ids": ["ape-101", "gioia-pan"],
     "type": "fashion-look",
     "status": "published",
     "name_key": "items.gioiaPanLook.name",
     "story_key": "items.gioiaPanLook.story",
     "alt_key": "items.gioiaPanLook.alt",
     "images": [
-      "assets/gioia-pan-bayc8796-runway.jpg",
-      "assets/gioia-pan-bayc8796-black-look.jpg",
-      "assets/gioia-pan-bayc8796-white-look.jpg"
+      "assets/gioia-pan-bayc8243-runway.jpg",
+      "assets/gioia-pan-bayc8243-black-look.jpg",
+      "assets/gioia-pan-bayc8243-white-look.jpg"
     ],
     "video": {
       "src": "assets/gioia-pan-aw23-720p-muted.mp4",
@@ -71,6 +113,12 @@
         "identification_status": "confirmed",
         "usage_authorization": "authorized-by-token-owner",
         "role_key": "items.gioiaPanLook.character"
+      },
+      {
+        "collection": "BAYC",
+        "token_id": "8243",
+        "identification_status": "confirmed",
+        "role_key": "items.gioiaPanLook.displayedLooks"
       }
     ],
     "related_news_ids": ["gioia-pan-thehubnews-20230409", "gioia-pan-jazko-20230409"]

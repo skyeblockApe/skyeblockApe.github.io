@@ -74,7 +74,7 @@
   "archiveError": "檔案暫時無法載入，請稍後再試。",
   "cabinet": {
     "metaTitle": "THE CABINET｜聯名實體紀錄 — Skyeblock",
-    "metaDescription": "走進 Skyeblock clubhouse 的展示櫃，閱讀 APE 101、CancerFree 等合作留下的聯名實體與故事。",
+    "metaDescription": "Skyeblock 聯名實體檔案：CancerFree、APE101、BAYC #8796 與潘怡良合作的提袋、帽子、徽章、口罩及海洋之心 Fashion Show。",
     "skip": "跳到展品",
     "navArchive": "展示櫃",
     "navHome": "返回 Clubhouse",
@@ -89,6 +89,7 @@
     "yearPending": "年份待確認",
     "partners": "合作方",
     "character": "角色識別",
+    "archiveEntry": "ARCHIVE ENTRY",
     "videoSource": "原始影片來源",
     "back": "← 返回 Clubhouse",
     "empty": "目前沒有可公開展示的物件。",
@@ -96,13 +97,15 @@
   },
   "items": {
     "cancerfreeTote": {
-      "name": "APE 101 × CancerFree 聯名提袋",
-      "story": "一件把角色、健康倡議與日常使用連在一起的合作實體。它被保留在此，作為共同完成一件事的紀錄；製作年份與完整合作故事仍待補充。",
-      "alt": "APE 101 與 CancerFree 聯名提袋實物照片",
-      "character": "BAYC #8796 出現在提袋圖像中。"
+      "name": "CancerFree × BAYC #8796 聯名提袋",
+      "story": "2022 年，CancerFree 與 BAYC #8796 將健康倡議與角色圖像放進日常使用的提袋，留下這次跨界合作的實體紀錄。",
+      "alt": "2022 年 CancerFree 與 BAYC #8796 聯名提袋",
+      "character": "提袋圖像使用 BAYC #8796。"
     },
-    "cancerfreeBadge": {"name":"APE 101 × CancerFree 徽章","story":"2023 年 ApeFest 期間留下的實體陳列紀錄。綠色徽章把 CancerFree Biotech 的識別與 BAYC #8796 放在同一個小小載體上，讓合作成為能被帶走、也能被記住的物件。","alt":"ApeFest 2023 現場桌面上的 APE 101 × CancerFree 綠色實體徽章與黑色帽子","character":"徽章圖像使用 BAYC #8796。"},
-    "gioiaPanLook": {"name":"GIOIA PAN 2023 AW「海洋之心」跨界秀服","story":"2023 年 4 月 8 日，GIOIA PAN「海洋之心」於淡水漁人碼頭登場。經 BAYC #8796 持有人授權，設計師潘怡良將角色轉化為織物圖像與伸展台演出，讓數位收藏走進實體時裝。","alt":"GIOIA PAN 2023 AW 伸展台上以 BAYC #8796 圖像設計的服裝","character":"BAYC #8796 由持有人授權潘怡良使用。","videoCaption":"BAYC #8796 參與 GIOIA PAN AW23 走秀片段","videoUsage":"非商業延伸使用；角色使用經 BAYC #8796 持有人授權。"},
+    "cancerfreeCap": {"name":"APE101 × CancerFree × BAYC #8796 聯名帽","story":"這頂黑色刺繡帽把 APE101、CancerFree 與 BAYC #8796 的合作關係收進同一件實體物件，並於 ApeFest 2023 留下陳列紀錄。","alt":"APE101、CancerFree 與 BAYC #8796 聯名黑色刺繡帽","character":"帽款結合 APE101、CancerFree 與 BAYC #8796。"},
+    "cancerfreeBadge": {"name":"CancerFree × BAYC #8796 聯名徽章","story":"綠色徽章將 CancerFree Biotech 的識別與 BAYC #8796 放在同一個小小載體上，讓合作成為能被帶走、也能被記住的物件。","alt":"CancerFree 與 BAYC #8796 綠色聯名徽章","character":"徽章圖像使用 BAYC #8796。"},
+    "cancerfreeMask": {"name":"CancerFree × BAYC #8796 聯名口罩","story":"以 CancerFree 與 BAYC #8796 為主題的黑色聯名口罩，把健康倡議與角色圖像帶進日常防護。","alt":"CancerFree 與 BAYC #8796 黑色聯名口罩","character":"口罩圖像使用 BAYC #8796。"},
+    "gioiaPanLook": {"name":"APE101 × 潘怡良 海洋之心 Fashion Show","story":"2023 年 4 月 8 日，APE101 與設計師潘怡良合作的「海洋之心」Fashion Show 於淡水漁人碼頭登場。BAYC #8796 擔任主持人，也被運用於部分服裝設計；目前展示的三張秀服照片則是 BAYC #8243。","alt":"GIOIA PAN 2023 AW 海洋之心伸展台上使用 BAYC #8243 圖像的服裝","character":"BAYC #8796 擔任主持人，並運用於部分服裝設計。","displayedLooks":"目前展示的三張秀服照片使用 BAYC #8243。","videoCaption":"BAYC #8796 擔任海洋之心 Fashion Show 主持人的片段","videoUsage":"非商業延伸使用；角色使用經 BAYC #8796 持有人授權。"},
     "dentsuBeer": {"name":"dentsu Taiwan 聯名啤酒","story":"資料與照片確認後公開。"}
   },
   "news": {
