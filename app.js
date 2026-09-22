@@ -19,7 +19,7 @@ const stage=$('.stage'),world=$('.clubhouse-world'),arrival=$('#arrival'),hud=$(
 const {StarVolume,sampleFlight,DURATION,smooth}=window.SkyeblockScene,stars=new StarVolume($('#stars')),reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let state='loading',paused=false,elapsed=0,last=0,visible=true,wasPaused=false,renderClock=0,quiet=0,ready=false;
 const cinema=window.SkyeblockCinematicEnvironment?new window.SkyeblockCinematicEnvironment($('.scene-backdrop')):null;
-const initialHash=location.hash;arrival.inert=true;bar.inert=true;
+arrival.inert=true;bar.inert=true;
 async function audioPlay(audio){if(!enabled||paused||document.hidden)return;try{await audio.play();blocked=false}catch{blocked=true}updateSound()}
 async function setSound(on){enabled=on;blocked=false;music.pause();flightAudio.pause();if(on&&(state==='flight'||state==='arrived'))await audioPlay(state==='flight'?flightAudio:music);updateSound()}
 sound.addEventListener('click',()=>setSound(!enabled));
@@ -52,7 +52,7 @@ async function prepareScene(){
 }
 const qp=new URLSearchParams(location.search);
 if(qp.has('motion-preview')){enabled=false;state='flight';stage.dataset.state=state;hud.hidden=false;elapsed=Math.max(0,Math.min(1,Number(qp.get('motion-preview'))||0))*DURATION;setPaused(true);draw(elapsed/DURATION,elapsed/1000);}
-else if(designReview||initialHash||reduced.matches)arrive();
+else if(designReview||reduced.matches)arrive();
 else start();
 prepareScene().catch(()=>arrive());
 window.SkyeblockApp={getState:()=>({state,enabled,lang,paused,elapsed,ready,renderer:'starfield-camera'}),setSound,start,arrive};

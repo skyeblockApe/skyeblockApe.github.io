@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /interior-review.html
 Sitemap: https://skyeblock.com/sitemap.xml

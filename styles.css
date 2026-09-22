@@ -110,3 +110,6 @@ html[data-review=interior] .host{visibility:visible!important}
  .flight-hud{bottom:50px}
 }
 @media(prefers-reduced-motion:reduce){.water-glow{animation:none}.arrival-ui,.scene-bar{transition:none!important}}
+.mba{flex-direction:row;gap:14px;align-items:center}.mba a{flex:0 0 auto}.mba img{flex:0 0 auto}.mba p{margin:0;min-width:0}
+@media(max-width:760px){.mba{grid-column:1/-1}}
+@media(max-width:760px){.site-header .wordmark,.site-header nav a,.scene-links a,.scene-event,.footer .wordmark{display:inline-flex;align-items:center;min-height:44px}.language select{min-height:44px}.scene-bar .small-button,.link-row a{min-width:44px}.link-row a{justify-content:center}}

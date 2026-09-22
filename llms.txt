@@ -1,0 +1,26 @@
+# Skyeblock
+
+> Skyeblock is a creative studio that turns curiosity into digital products, stories, and experiences across care, learning, and exploration.
+
+Canonical website: https://skyeblock.com/
+Primary language: Traditional Chinese
+Available interface languages: Traditional Chinese, English, Japanese
+Contact: Skyeblock@gmail.com
+
+## Projects
+
+- MythFog — A location-based exploration product that reveals the world's fog through walking. https://www.mythfog.com/
+- HENI Care — A planned care product for recording pain, food, medication, and mood. Not yet available. https://henicare.com/
+- History 101 — A live educational product for exploring events across places, time, and relationships. Sign-in is required. https://history101.skyeblock.com/
+- GeneDex — A concept in development for adopting genes awaiting research. Registration is not open.
+
+## Other work
+
+- Avatar Medicine Forum — A past forum about avatar medicine; BAYC #8796 served as MC in 2022 and 2023.
+- APE 101 × CancerFree — An archived charity merchandise collaboration.
+- 病了才知道 — A Traditional Chinese health podcast featuring doctors, dietitians, and health specialists.
+- 精準健康嘉年華 2026 — An event organized by CancerFree Biotech, October 17–18, 2026, at Songshan Cultural and Creative Park in Taipei.
+
+## Licensing
+
+Made by Apes License #00192-1-29896. MAYC #29896.
