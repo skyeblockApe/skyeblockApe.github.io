@@ -30,7 +30,7 @@
     "name_key": "items.cancerfreeCap.name",
     "story_key": "items.cancerfreeCap.story",
     "alt_key": "items.cancerfreeCap.alt",
-    "images": ["assets/ape101-cancerfree-bayc8796-cap.webp"],
+    "images": ["assets/cancerfree-badge-apefest-2023.jpg"],
     "character_refs": [
       {
         "collection": "BAYC",
