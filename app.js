@@ -6,8 +6,9 @@ const $=s=>document.querySelector(s),sound=$('#sound'),music=$('#music-audio');
 const safeGet=k=>{try{return localStorage.getItem(k)}catch{return null}};
 const safeSet=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
 const normalizeLang=value=>value==='zh'||value==='zh-Hant'||value==='zh-TW'?'zh-TW':['en','ja'].includes(value)?value:'zh-TW';
-let lang=normalizeLang(safeGet('skyeblock-language')),enabled=safeGet('skyeblock-sound-enabled')==='true',blocked=false,currentCopy=null;
-const zh={soundOff:'聲音 關',soundOn:'聲音 開',soundBlocked:'點此恢復聲音',pause:'暫停',resume:'繼續',relatedNews:'相關報導',readOriginal:'閱讀原文 ↗',permanentSnapshot:'永久快照 ↗',archiveLoading:'正在整理檔案…',archiveError:'檔案暫時無法載入，請稍後再試。',cabinetEntry:'進入展示櫃 ↗'};
+const requestedLang=new URLSearchParams(location.search).get('lang');
+let lang=normalizeLang(requestedLang||safeGet('skyeblock-language')),enabled=safeGet('skyeblock-sound-enabled')==='true',blocked=false,currentCopy=null;
+const zh={metaTitle:'Skyeblock — 讓好奇，成為作品。',metaDescription:'Skyeblock 是以好奇心為起點的創意工作室，設計 MythFog、HENI Care、History 101、GeneDex，以及健康 Podcast《病了才知道》。',soundOff:'聲音 關',soundOn:'聲音 開',soundBlocked:'點此恢復聲音',pause:'暫停',resume:'繼續',relatedNews:'相關報導',readOriginal:'閱讀原文 ↗',permanentSnapshot:'永久快照 ↗',archiveLoading:'正在整理檔案…',archiveError:'檔案暫時無法載入，請稍後再試。',cabinetEntry:'進入展示櫃 ↗'};
 document.querySelectorAll('[data-i18n]').forEach(e=>{zh[e.dataset.i18n]??=e.innerHTML;});
 document.querySelectorAll('[data-aria]').forEach(e=>{zh[e.dataset.aria]??=e.getAttribute('aria-label');});
 const additions={en:{navContact:'Contact',archiveLink:'Past projects ↗',podcastLink:'Podcast ↗',eventShort:'Precision Health Carnival 2026 ↗',eventCredit:'Oct 17–18 · Hosted by CancerFree Biotech',cabinetEntry:'Enter the Cabinet ↗',relatedNews:'Related coverage',readOriginal:'Read original ↗',permanentSnapshot:'Permanent snapshot ↗',archiveLoading:'Opening the archive…',archiveError:'The archive is temporarily unavailable.'},ja:{navContact:'連絡',archiveLink:'過去の活動 ↗',podcastLink:'ポッドキャスト ↗',eventShort:'精準健康嘉年華 2026 ↗',eventCredit:'10.17–18 · CancerFree Biotech 主催',cabinetEntry:'展示室へ ↗',relatedNews:'関連報道',readOriginal:'原文を読む ↗',permanentSnapshot:'保存版 ↗',archiveLoading:'アーカイブを読み込み中…',archiveError:'アーカイブを一時的に読み込めません。'}};
@@ -16,8 +17,16 @@ const getPath=(object,path)=>path.split('.').reduce((value,key)=>value&&value[ke
 const t=k=>getPath(currentCopy,k)??(lang==='zh-TW'?zh:window.SKYEBLOCK_COPY[lang])?.[k]??zh[k]??k;
 async function loadLocale(next){try{const response=await fetch(`locales/${next}.json`,{cache:'no-cache'});if(!response.ok)throw new Error(response.status);return response.json()}catch{return next==='zh-TW'?zh:window.SKYEBLOCK_COPY[next]}}
 function updateSound(){sound.textContent=t(blocked?'soundBlocked':enabled?'soundOn':'soundOff');sound.setAttribute('aria-pressed',String(enabled&&!blocked))}
-async function setLang(next){lang=normalizeLang(next);currentCopy=await loadLocale(lang);$('#language').value=lang;document.documentElement.lang={"zh-TW":'zh-Hant',en:'en',ja:'ja'}[lang];document.querySelectorAll('[data-i18n]').forEach(e=>e.innerHTML=t(e.dataset.i18n).replace(e.dataset.i18n==='heroTitle'?/<br\s*\/?\s*>/g:/$^/g,' '));document.querySelectorAll('[data-aria]').forEach(e=>e.setAttribute('aria-label',t(e.dataset.aria)));document.title=t('metaTitle');safeSet('skyeblock-language',lang);updateSound();document.dispatchEvent(new CustomEvent('skyeblock:languagechange'))}
-$('#language').addEventListener('change',e=>setLang(e.target.value));setLang(lang);$('#year').textContent=new Date().getFullYear();music.volume=.45;
+function updateDiscoveryMeta(){
+  document.title=t('metaTitle');
+  const description=t('metaDescription');
+  const canonicalUrl=lang==='zh-TW'?'https://skyeblock.com/':`https://skyeblock.com/?lang=${lang}`;
+  const setContent=(selector,value)=>{const node=$(selector);if(node)node.content=value};
+  setContent('meta[name="description"]',description);setContent('meta[property="og:title"]',t('metaTitle'));setContent('meta[property="og:description"]',description);setContent('meta[name="twitter:title"]',t('metaTitle'));setContent('meta[name="twitter:description"]',description);setContent('meta[property="og:url"]',canonicalUrl);
+  const canonical=$('link[rel="canonical"]');if(canonical)canonical.href=canonicalUrl;
+}
+async function setLang(next,{syncUrl=false}={}){lang=normalizeLang(next);currentCopy=await loadLocale(lang);$('#language').value=lang;document.documentElement.lang={"zh-TW":'zh-Hant',en:'en',ja:'ja'}[lang];document.querySelectorAll('[data-i18n]').forEach(e=>e.innerHTML=t(e.dataset.i18n).replace(e.dataset.i18n==='heroTitle'?/<br\s*\/?\s*>/g:/$^/g,' '));document.querySelectorAll('[data-aria]').forEach(e=>e.setAttribute('aria-label',t(e.dataset.aria)));updateDiscoveryMeta();safeSet('skyeblock-language',lang);if(syncUrl){const url=new URL(location.href);if(lang==='zh-TW')url.searchParams.delete('lang');else url.searchParams.set('lang',lang);history.replaceState(null,'',url)}updateSound();document.dispatchEvent(new CustomEvent('skyeblock:languagechange'))}
+$('#language').addEventListener('change',e=>setLang(e.target.value,{syncUrl:true}));setLang(lang);$('#year').textContent=new Date().getFullYear();music.volume=.45;
 
 const stage=$('.stage'),world=$('.clubhouse-world'),arrival=$('#arrival'),hud=$('#flight-hud'),bar=$('.scene-bar'),progress=$('#flight-progress'),pauseButton=$('#pause'),flightAudio=$('#flight-audio');
 const {StarVolume,sampleFlight,DURATION,smooth}=window.SkyeblockScene,stars=new StarVolume($('#stars')),reduced=matchMedia('(prefers-reduced-motion: reduce)');

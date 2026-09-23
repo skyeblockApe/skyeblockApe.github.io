@@ -10,7 +10,8 @@ const fallback={
   language:'語言',navLabel:'主導覽',soundOff:'聲音 關',soundOn:'聲音 開',soundBlocked:'點此恢復聲音',relatedNews:'相關報導',readOriginal:'閱讀原文 ↗',permanentSnapshot:'永久快照 ↗',archiveLoading:'正在整理檔案…',
   cabinet:{metaTitle:'THE CABINET｜聯名實體紀錄 — Skyeblock',metaDescription:'走進 Skyeblock clubhouse 的展示櫃，閱讀共同完成的聯名實體與故事。',yearPending:'年份待確認',partners:'合作方',character:'角色識別',archiveEntry:'ARCHIVE ENTRY',videoSource:'原始影片來源',empty:'目前沒有可公開展示的物件。',loadError:'展示櫃資料暫時無法載入；你仍可返回 clubhouse。'}
 };
-let lang=normalizeLang(safeGet('skyeblock-language'));
+const requestedLang=new URLSearchParams(location.search).get('lang');
+let lang=normalizeLang(requestedLang||safeGet('skyeblock-language'));
 let copy=fallback;
 let dataset=null;
 let soundEnabled=safeGet('skyeblock-sound-enabled')==='true';
@@ -28,6 +29,9 @@ function applyCopy(){
   const description=document.querySelector('meta[name="description"]');if(description)description.content=t('cabinet.metaDescription');
   ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(selector=>{const meta=$(selector);if(meta)meta.content=t('cabinet.metaTitle')});
   ['meta[property="og:description"]','meta[name="twitter:description"]'].forEach(selector=>{const meta=$(selector);if(meta)meta.content=t('cabinet.metaDescription')});
+  const canonicalUrl=lang==='zh-TW'?'https://skyeblock.com/cabinet.html':`https://skyeblock.com/cabinet.html?lang=${lang}`;
+  const canonical=$('link[rel="canonical"]');if(canonical)canonical.href=canonicalUrl;
+  const ogUrl=$('meta[property="og:url"]');if(ogUrl)ogUrl.content=canonicalUrl;
   updateSound();
 }
 function el(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node}
@@ -60,11 +64,11 @@ function renderItems(){
   root.setAttribute('aria-busy','false');
   const activateVideo=video=>{video.poster=video.dataset.poster;video.src=video.dataset.src;delete video.dataset.poster;delete video.dataset.src};const videos=$$('video[data-src]');if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;activateVideo(entry.target);observer.unobserve(entry.target)}),{rootMargin:'300px'});videos.forEach(video=>observer.observe(video))}else{videos.forEach(activateVideo)}
 }
-async function loadLanguage(next){lang=normalizeLang(next);safeSet('skyeblock-language',lang);try{copy=await getJSON(`locales/${lang}.json`)}catch{copy=fallback}applyCopy();renderItems()}
+async function loadLanguage(next,{syncUrl=false}={}){lang=normalizeLang(next);safeSet('skyeblock-language',lang);try{copy=await getJSON(`locales/${lang}.json`)}catch{copy=fallback}applyCopy();if(syncUrl){const url=new URL(location.href);if(lang==='zh-TW')url.searchParams.delete('lang');else url.searchParams.set('lang',lang);history.replaceState(null,'',url)}renderItems()}
 async function loadData(){try{const [items,news,projects,partners]=await Promise.all(['data/items.json','data/news.json','data/projects.json','data/partners.json'].map(getJSON));dataset={items,news,projects,partners};renderItems()}catch(error){console.warn('Cabinet data unavailable',error);const root=$('#cabinet-items');root.replaceChildren(el('p','cabinet-error',t('cabinet.loadError')));root.setAttribute('aria-busy','false')}}
 function updateSound(){const button=$('#sound');if(!button)return;button.textContent=t(soundBlocked?'soundBlocked':soundEnabled?'soundOn':'soundOff');button.setAttribute('aria-pressed',String(soundEnabled&&!soundBlocked))}
 async function setSound(enabled){soundEnabled=enabled;soundBlocked=false;safeSet('skyeblock-sound-enabled',String(enabled));const music=$('#music-audio');music.volume=.38;if(!enabled){music.pause();updateSound();return}try{await music.play()}catch{soundBlocked=true}updateSound()}
-$('#language').addEventListener('change',event=>loadLanguage(event.target.value));
+$('#language').addEventListener('change',event=>loadLanguage(event.target.value,{syncUrl:true}));
 $('#sound').addEventListener('click',()=>setSound(!soundEnabled||soundBlocked));
 $('#year').textContent=new Date().getFullYear();
 Promise.all([loadLanguage(lang),loadData()]).then(()=>{if(soundEnabled)setSound(true)});
