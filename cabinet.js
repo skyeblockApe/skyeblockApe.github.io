@@ -8,7 +8,7 @@ const normalizeLang=value=>value==='zh'||value==='zh-Hant'||value==='zh-TW'?'zh-
 const langToHtml={"zh-TW":"zh-Hant",en:'en',ja:'ja'};
 const fallback={
   language:'語言',navLabel:'主導覽',soundOff:'聲音 關',soundOn:'聲音 開',soundBlocked:'點此恢復聲音',relatedNews:'相關報導',readOriginal:'閱讀原文 ↗',permanentSnapshot:'永久快照 ↗',archiveLoading:'正在整理檔案…',
-  cabinet:{metaTitle:'THE CABINET｜聯名實體紀錄 — Skyeblock',metaDescription:'走進 Skyeblock clubhouse 的展示櫃，閱讀共同完成的聯名實體與故事。',yearPending:'年份待確認',partners:'合作方',character:'角色識別',archiveEntry:'ARCHIVE ENTRY',videoSource:'原始影片來源',empty:'目前沒有可公開展示的物件。',loadError:'展示櫃資料暫時無法載入；你仍可返回 clubhouse。'}
+  cabinet:{metaTitle:'THE CABINET｜聯名實體紀錄 — Skyeblock',metaDescription:'走進 Skyeblock clubhouse 的展示櫃，閱讀共同完成的聯名實體與故事。',yearPending:'年份待確認',partners:'合作方',character:'角色識別',archiveEntry:'ARCHIVE ENTRY',videoSource:'原始影片來源',previousImage:'上一張圖片',nextImage:'下一張圖片',showImage:'顯示圖片',empty:'目前沒有可公開展示的物件。',loadError:'展示櫃資料暫時無法載入；你仍可返回 clubhouse。'}
 };
 const requestedLang=new URLSearchParams(location.search).get('lang');
 let lang=normalizeLang(requestedLang||safeGet('skyeblock-language'));
@@ -16,6 +16,7 @@ let copy=fallback;
 let dataset=null;
 let soundEnabled=safeGet('skyeblock-sound-enabled')==='true';
 let soundBlocked=false;
+let stopCarousels=[];
 
 function getPath(object,path){return path.split('.').reduce((value,key)=>value&&value[key],object)}
 function t(key){return getPath(copy,key)??getPath(fallback,key)??key}
@@ -46,16 +47,31 @@ function renderNews(ids,news){
     article.append(links);details.append(article)});
   return details;
 }
+function renderCarousel(item){
+  const carousel=el('div','exhibit-carousel');carousel.setAttribute('role','region');carousel.setAttribute('aria-roledescription','carousel');carousel.setAttribute('aria-label',t(item.alt_key));
+  const track=el('div','carousel-track');let active=0;let timer=null;let visible=false;let paused=false;
+  const slides=item.images.map((source,index)=>{const image=el('img');image.src=source;image.alt=index?`${t(item.alt_key)} — ${index+1}`:t(item.alt_key);image.width=700;image.height=875;image.loading='lazy';image.decoding='async';image.classList.toggle('is-active',index===0);image.setAttribute('aria-hidden',String(index!==0));track.append(image);return image});
+  const controls=el('div','carousel-controls');const previous=el('button','carousel-arrow','←');const next=el('button','carousel-arrow','→');previous.type=next.type='button';previous.setAttribute('aria-label',t('cabinet.previousImage'));next.setAttribute('aria-label',t('cabinet.nextImage'));
+  const dots=el('div','carousel-dots');const dotButtons=slides.map((_,index)=>{const button=el('button','carousel-dot');button.type='button';button.setAttribute('aria-label',`${t('cabinet.showImage')} ${index+1}`);button.setAttribute('aria-current',String(index===0));dots.append(button);return button});
+  function show(index){active=(index+slides.length)%slides.length;slides.forEach((slide,i)=>{const selected=i===active;slide.classList.toggle('is-active',selected);slide.setAttribute('aria-hidden',String(!selected));dotButtons[i].setAttribute('aria-current',String(selected))})}
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  function start(){stop();if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&visible&&!paused)timer=setInterval(()=>show(active+1),4200)}
+  previous.addEventListener('click',()=>{show(active-1);start()});next.addEventListener('click',()=>{show(active+1);start()});dotButtons.forEach((button,index)=>button.addEventListener('click',()=>{show(index);start()}));
+  carousel.addEventListener('pointerenter',()=>{paused=true;stop()});carousel.addEventListener('pointerleave',()=>{paused=false;start()});carousel.addEventListener('focusin',()=>{paused=true;stop()});carousel.addEventListener('focusout',event=>{if(!carousel.contains(event.relatedTarget)){paused=false;start()}});
+  controls.append(previous,dots,next);carousel.append(track,controls);
+  if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{visible=entry.isIntersecting;if(visible)start();else stop()}),{threshold:.2});observer.observe(carousel);stopCarousels.push(()=>{stop();observer.disconnect()})}else{visible=true;start();stopCarousels.push(stop)}
+  return carousel;
+}
 function renderItems(){
   if(!dataset)return;
-  const root=$('#cabinet-items');root.replaceChildren();
+  stopCarousels.forEach(stop=>stop());stopCarousels=[];const root=$('#cabinet-items');root.replaceChildren();
   const published=dataset.items.filter(item=>item.status==='published');
   if(!published.length){root.append(el('p','cabinet-empty',t('cabinet.empty')));root.setAttribute('aria-busy','false');return}
   published.forEach((item,index)=>{
     const article=el('article','cabinet-exhibit');article.id=`exhibit-${item.id}`;
     const visual=el('div','exhibit-visual');visual.append(el('span','exhibit-number',`${t('cabinet.archiveEntry')} ${String(index+1).padStart(2,'0')}`));
     if(item.video){const figure=el('figure','exhibit-video');const video=el('video');video.dataset.src=item.video.src;video.dataset.poster=item.video.poster;video.controls=true;video.muted=true;video.playsInline=true;video.preload='none';video.setAttribute('aria-label',t(item.video.caption_key));figure.append(video);const caption=el('figcaption');caption.append(el('span','',t(item.video.caption_key)),document.createTextNode(' · '));const source=el('a','',`${t('cabinet.videoSource')}：${item.video.source_title} ↗`);source.href=item.video.source_url;source.target='_blank';source.rel='noopener noreferrer';caption.append(source,el('small','',t(item.video.usage_key)));figure.append(caption);visual.append(figure)}
-    const gallery=el('div',item.images.length>1?'exhibit-gallery':'exhibit-single');item.images.forEach((source,imageIndex)=>{const image=el('img');image.src=source;image.alt=imageIndex?`${t(item.alt_key)} — ${imageIndex+1}`:t(item.alt_key);image.width=700;image.height=700;image.loading='lazy';image.decoding='async';gallery.append(image)});visual.append(gallery);
+    if(item.gallery_mode==='carousel'&&item.images.length>1)visual.append(renderCarousel(item));else{const gallery=el('div',item.images.length>1?'exhibit-gallery':'exhibit-single');item.images.forEach((source,imageIndex)=>{const image=el('img');image.src=source;image.alt=imageIndex?`${t(item.alt_key)} — ${imageIndex+1}`:t(item.alt_key);image.width=700;image.height=700;image.loading='lazy';image.decoding='async';gallery.append(image)});visual.append(gallery)}
     const content=el('div','exhibit-copy');const meta=el('div','exhibit-meta');meta.append(el('span','',item.type.replaceAll('-',' ')),el('span','',item.year||t('cabinet.yearPending')));content.append(meta,el('h3','',t(item.name_key)),el('p','exhibit-story',t(item.story_key)));
     const facts=el('dl','exhibit-facts');const partners=item.partner_ids.map(id=>dataset.partners.find(partner=>partner.id===id)?.name).filter(Boolean).join(' × ');facts.append(el('div',''));facts.lastChild.append(el('dt','',t('cabinet.partners')),el('dd','',partners));
     const characterRoles=(item.character_refs||[]).filter(ref=>ref.identification_status==='confirmed'&&ref.role_key).map(ref=>t(ref.role_key));facts.append(el('div',''));facts.lastChild.append(el('dt','',t('cabinet.character')),el('dd','',characterRoles.length?characterRoles.join(' '):t('cabinet.yearPending')));content.append(facts);

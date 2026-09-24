@@ -72,7 +72,12 @@
     "name_key": "items.cancerfreeMask.name",
     "story_key": "items.cancerfreeMask.story",
     "alt_key": "items.cancerfreeMask.alt",
-    "images": ["assets/cancerfree-bayc8796-mask.jpg"],
+    "gallery_mode": "carousel",
+    "images": [
+      "assets/cancerfree-bayc8796-mask.jpg",
+      "assets/cancerfree-bayc8796-mask-front.webp",
+      "assets/cancerfree-bayc8796-mask-message.webp"
+    ],
     "character_refs": [
       {
         "collection": "BAYC",
@@ -126,14 +131,22 @@
   {
     "id": "dentsu-taiwan-beer",
     "project": "dentsu-beer",
-    "year": null,
-    "partner_ids": ["dentsu-taiwan"],
+    "year": 2023,
+    "partner_ids": ["dentsu-taiwan", "bayc-8243"],
     "type": "beverage-archive",
-    "status": "draft",
+    "status": "published",
     "name_key": "items.dentsuBeer.name",
     "story_key": "items.dentsuBeer.story",
-    "images": [],
-    "character_refs": [],
+    "alt_key": "items.dentsuBeer.alt",
+    "images": ["assets/dentsu-bayc8243-beer-2023.webp"],
+    "character_refs": [
+      {
+        "collection": "BAYC",
+        "token_id": "8243",
+        "identification_status": "confirmed",
+        "role_key": "items.dentsuBeer.character"
+      }
+    ],
     "related_news_ids": []
   }
 ]

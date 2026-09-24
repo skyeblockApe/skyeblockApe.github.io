@@ -72,7 +72,7 @@
   "faqPodcastQ": "《病了才知道》是什麼？",
   "faqPodcastA": "《病了才知道》是繁體中文健康 Podcast，透過醫師、營養師與健康專家的對談，把複雜的健康知識說清楚。",
   "faqCabinetQ": "合作實體紀錄在哪裡？",
-  "faqCabinetA": "THE CABINET 保存合作實體與來源：2022 年提袋為 CancerFree × BAYC #8796；聯名帽為 APE101 × CancerFree × BAYC #8796；徽章與口罩為 CancerFree × BAYC #8796；海洋之心 Fashion Show 為 APE101 × 潘怡良合作，BAYC #8796 擔任主持人並出現在部分服裝，目前展示的三張走秀照使用 BAYC #8243。<a href=\"cabinet.html\">進入 THE CABINET ↗</a>",
+  "faqCabinetA": "THE CABINET 保存合作實體與來源：2022 年提袋為 CancerFree × BAYC #8796；聯名帽為 APE101 × CancerFree × BAYC #8796；徽章與口罩為 CancerFree × BAYC #8796；2023 聯名啤酒為台灣電通 × BAYC #8243；海洋之心 Fashion Show 為 APE101 × 潘怡良合作，BAYC #8796 擔任主持人並出現在部分服裝，目前展示的三張走秀照使用 BAYC #8243。<a href=\"cabinet.html\">進入 THE CABINET ↗</a>",
   "contact": "一起聊聊 ↗",
   "footerLine": "把好奇留下，把想法做出來。",
   "geneTitle": "成為未知基因的守護者。",
@@ -85,7 +85,7 @@
   "archiveError": "檔案暫時無法載入，請稍後再試。",
   "cabinet": {
     "metaTitle": "THE CABINET｜聯名實體紀錄 — Skyeblock",
-    "metaDescription": "Skyeblock 聯名實體檔案：CancerFree、APE101、BAYC #8796 與潘怡良合作的提袋、帽子、徽章、口罩及海洋之心 Fashion Show。",
+    "metaDescription": "Skyeblock 聯名實體檔案：CancerFree、APE101、台灣電通、BAYC #8796、BAYC #8243 與潘怡良合作的提袋、帽子、徽章、口罩、聯名啤酒及海洋之心 Fashion Show。",
     "skip": "跳到展品",
     "navArchive": "展示櫃",
     "navHome": "返回 Clubhouse",
@@ -102,6 +102,9 @@
     "character": "角色識別",
     "archiveEntry": "ARCHIVE ENTRY",
     "videoSource": "原始影片來源",
+    "previousImage": "上一張圖片",
+    "nextImage": "下一張圖片",
+    "showImage": "顯示圖片",
     "back": "← 返回 Clubhouse",
     "empty": "目前沒有可公開展示的物件。",
     "loadError": "展示櫃資料暫時無法載入；你仍可返回 clubhouse。"
@@ -115,9 +118,9 @@
     },
     "cancerfreeCap": {"name":"APE101 × CancerFree × BAYC #8796 聯名帽","story":"這頂黑色刺繡帽把 APE101、CancerFree 與 BAYC #8796 的合作關係收進同一件實體物件，並於 ApeFest 2023 留下陳列紀錄。","alt":"APE101、CancerFree 與 BAYC #8796 聯名黑色刺繡帽","character":"帽款結合 APE101、CancerFree 與 BAYC #8796。"},
     "cancerfreeBadge": {"name":"CancerFree × BAYC #8796 聯名徽章","story":"綠色徽章將 CancerFree Biotech 的識別與 BAYC #8796 放在同一個小小載體上，讓合作成為能被帶走、也能被記住的物件。","alt":"CancerFree 與 BAYC #8796 綠色聯名徽章","character":"徽章圖像使用 BAYC #8796。"},
-    "cancerfreeMask": {"name":"CancerFree × BAYC #8796 聯名口罩","story":"以 CancerFree 與 BAYC #8796 為主題的黑色聯名口罩，把健康倡議與角色圖像帶進日常防護。","alt":"CancerFree 與 BAYC #8796 黑色聯名口罩","character":"口罩圖像使用 BAYC #8796。"},
+    "cancerfreeMask": {"name":"CancerFree × BAYC #8796 聯名口罩","story":"以 CancerFree 與 BAYC #8796 為主題的黑色聯名口罩，把健康倡議與角色圖像帶進日常防護。三張照片分別呈現既有展品照、BAYC #8796 圖像面，以及 CancerFree 健康倡議文字面。","alt":"CancerFree 與 BAYC #8796 黑色聯名口罩","character":"口罩圖像使用 BAYC #8796。"},
     "gioiaPanLook": {"name":"APE101 × 潘怡良 海洋之心 Fashion Show","story":"2023 年 4 月 8 日，APE101 與設計師潘怡良合作的「海洋之心」Fashion Show 於淡水漁人碼頭登場。BAYC #8796 擔任主持人，也被運用於部分服裝設計；目前展示的三張秀服照片則是 BAYC #8243。","alt":"GIOIA PAN 2023 AW 海洋之心伸展台上使用 BAYC #8243 圖像的服裝","character":"BAYC #8796 擔任主持人，並運用於部分服裝設計。","displayedLooks":"目前展示的三張秀服照片使用 BAYC #8243。","videoCaption":"BAYC #8796 擔任海洋之心 Fashion Show 主持人的片段","videoUsage":"非商業延伸使用；角色使用經 BAYC #8796 持有人授權。"},
-    "dentsuBeer": {"name":"dentsu Taiwan 聯名啤酒","story":"資料與照片確認後公開。"}
+    "dentsuBeer": {"name":"台灣電通 × BAYC #8243｜2023 聯名啤酒","story":"2023 年，台灣電通與 BAYC #8243 合作推出聯名啤酒；實體罐身結合 dentsu consult 標誌與 BAYC #8243 角色圖像。","alt":"2023 年台灣電通與 BAYC #8243 聯名啤酒罐","character":"啤酒罐身圖像使用 BAYC #8243。"}
   },
   "news": {
     "avatarCancerFree": {"summary":"CancerFree 官方文章記錄 BAYC #8796 擔任替身醫療論壇主持人的跨界參與。","role":"BAYC #8796 擔任論壇 MC。"},
