@@ -22,8 +22,16 @@ function updateDiscoveryMeta(){
   const description=t('metaDescription');
   const canonicalUrl=lang==='zh-TW'?'https://skyeblock.com/':`https://skyeblock.com/?lang=${lang}`;
   const setContent=(selector,value)=>{const node=$(selector);if(node)node.content=value};
-  setContent('meta[name="description"]',description);setContent('meta[property="og:title"]',t('metaTitle'));setContent('meta[property="og:description"]',description);setContent('meta[name="twitter:title"]',t('metaTitle'));setContent('meta[name="twitter:description"]',description);setContent('meta[property="og:url"]',canonicalUrl);
+  setContent('meta[name="description"]',description);setContent('meta[property="og:title"]',t('metaTitle'));setContent('meta[property="og:description"]',description);setContent('meta[name="twitter:title"]',t('metaTitle'));setContent('meta[name="twitter:description"]',description);setContent('meta[property="og:url"]',canonicalUrl);setContent('meta[property="og:locale"]',lang==='zh-TW'?'zh_TW':lang==='ja'?'ja_JP':'en_US');
   const canonical=$('link[rel="canonical"]');if(canonical)canonical.href=canonicalUrl;
+  const jsonLd=$('script[type="application/ld+json"]');
+  if(jsonLd){try{const data=JSON.parse(jsonLd.textContent||'{}'),graph=Array.isArray(data['@graph'])?data['@graph']:[];
+    const website=graph.find(item=>item['@type']==='WebSite'),page=graph.find(item=>item['@type']==='WebPage'),faq=graph.find(item=>item['@type']==='FAQPage');
+    if(website){website.url=canonicalUrl;website.inLanguage=lang==='zh-TW'?'zh-Hant':lang;}
+    if(page){page.url=canonicalUrl;page['@id']=`${canonicalUrl}#webpage`;page.name=t('metaTitle');page.description=description;page.inLanguage=lang==='zh-TW'?'zh-Hant':lang;}
+    if(faq){faq.url=`${canonicalUrl}#faq`;faq['@id']=`${canonicalUrl}#faq`;faq.inLanguage=lang==='zh-TW'?'zh-Hant':lang;const keys=[['faqWhatQ','faqWhatA'],['faqProjectsQ','faqProjectsA'],['faqPodcastQ','faqPodcastA'],['faqCabinetQ','faqCabinetA']];faq.mainEntity?.forEach((item,i)=>{const pair=keys[i];if(pair){item.name=t(pair[0]);item.acceptedAnswer={...(item.acceptedAnswer||{}),text:t(pair[1])}}});}
+    jsonLd.textContent=JSON.stringify(data);
+  }catch{}}
 }
 async function setLang(next,{syncUrl=false}={}){lang=normalizeLang(next);currentCopy=await loadLocale(lang);$('#language').value=lang;document.documentElement.lang={"zh-TW":'zh-Hant',en:'en',ja:'ja'}[lang];document.querySelectorAll('[data-i18n]').forEach(e=>e.innerHTML=t(e.dataset.i18n).replace(e.dataset.i18n==='heroTitle'?/<br\s*\/?\s*>/g:/$^/g,' '));document.querySelectorAll('[data-aria]').forEach(e=>e.setAttribute('aria-label',t(e.dataset.aria)));updateDiscoveryMeta();safeSet('skyeblock-language',lang);if(syncUrl){const url=new URL(location.href);if(lang==='zh-TW')url.searchParams.delete('lang');else url.searchParams.set('lang',lang);history.replaceState(null,'',url)}updateSound();document.dispatchEvent(new CustomEvent('skyeblock:languagechange'))}
 $('#language').addEventListener('change',e=>setLang(e.target.value,{syncUrl:true}));setLang(lang);$('#year').textContent=new Date().getFullYear();music.volume=.45;
